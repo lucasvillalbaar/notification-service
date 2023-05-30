@@ -11,7 +11,7 @@ A Firebase service account key JSON file
 ## Getting Started
 ### Clone the repository:
 ```
-git clone https://github.com/your-username/push-notification-service.git
+git clone https://github.com/your-username/notification-service.git
 ```
 
 ### Navigate to the project directory:
@@ -26,7 +26,7 @@ Place your serviceAccountKey.json file in the project directory.
 
 ```
 docker build -t push-notification-service .
-docker run -p 8080:8080 -v $(pwd)/serviceAccountKey.json:/app/serviceAccountKey.json push-notification-service
+docker run -p 8080:8080 -v $(pwd)/serviceAccountKey.json:/app/serviceAccountKey.json notification-service
 ```
 
 Make sure to replace ```$(pwd)/serviceAccountKey.json``` with the actual path to your ```serviceAccountKey.json``` file.
@@ -38,7 +38,7 @@ To send a push notification, make a POST request to http://localhost:8080/send w
 
 ```
 {
-  "user_firebase_token": "3782yubeuidsknsdljslndlskdls",
+  "user_firebase_token": "dnuwJmafQme64wAevCp99r:APA91bGD7S8to_Q5UyFIbRITyD7Tt8jpK0Lcvv05VXXinbgzNzIlOlL7ZZqpPD1RtiTt_jcObO2f3mcDCi3S_g40VtDqeFtSDNIhrxrUlF4caP1p0Vlv8IxfMM9zjQzyxTPy3yysdskjh",
   "title": "Hello, I'm a title",
   "body": "I'm the body of the notification"
 }
