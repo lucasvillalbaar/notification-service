@@ -64,4 +64,13 @@ To send a push notification, make a POST request to http://localhost:8080/send w
 
 Ensure that you provide a valid Firebase token, title, and body in the request.
 
+## Customization
+You can customize the microservice according to your needs. Some possible customizations include:
+
+- Adding authentication and authorization to the HTTP endpoint
+- Implementing additional error handling and logging
+- Enhancing the notification payload with additional data fields
+
+***
+
 I hope this helps! Let me know if you have any further questions.
