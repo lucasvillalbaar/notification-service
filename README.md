@@ -11,7 +11,7 @@ A Firebase service account key JSON file
 ## Getting Started
 ### Clone the repository:
 ```
-git clone https://lucasvillalbaar/notification-service/notification-service.git
+git clone git@github.com:lucasvillalbaar/notification-service.git
 ```
 
 ### Navigate to the project directory:
