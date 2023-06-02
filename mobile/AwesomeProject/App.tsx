@@ -23,6 +23,11 @@ export default function App() {
     console.log('MESSAGE HANDLED IN BACKGROUND');
     console.log(remoteMessage.notification?.title);
     console.log(remoteMessage.notification?.body);
+
+    const remoteTitle = remoteMessage.notification?.title ?? 'Title';
+    const remoteBody = remoteMessage.notification?.body ?? 'Body';
+    setNotificationTitle(remoteTitle);
+    setNotificationBody(remoteBody);
   });
 
   // Handle foreground messages
