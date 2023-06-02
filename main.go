@@ -49,6 +49,13 @@ func main() {
 				Title: notification.Title,
 				Body:  notification.Body,
 			},
+			Android: &messaging.AndroidConfig{
+				Notification: &messaging.AndroidNotification{
+					ChannelID: "default-channel-id",
+					Title:     notification.Title,
+					Body:      notification.Body,
+				},
+			},
 		}
 
 		// Send the message
