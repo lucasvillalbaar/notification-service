@@ -19,4 +19,7 @@
 
 # Go workspace file
 go.work
+
+# Firebase Keys
 serviceAccountKey.json
+google-services.json
