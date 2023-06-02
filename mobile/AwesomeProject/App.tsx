@@ -7,42 +7,34 @@ export default function App() {
   const [title, setNotificationTitle] = useState('Title');
   const [body, setNotificationBody] = useState('Body');
   
-  //Get the token from Firebase and display it in the console (for development purposes only)
-  messaging()
-  .getToken()
-  .then((token) => {
-    console.log('TOKEN:', token);
-    // TODO: Send token to the backend
-  })
-  .catch((error) => {
-    console.log('ERROR: Error al obtener el token de Firebase:', error);
-  });
+  useEffect(() =>{
+    // Handle foreground messages
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log('MESSAGE HANDLED IN FOREGROUND');
+      console.log(remoteMessage.notification?.title);
+      console.log(remoteMessage.notification?.body);
+      
+      const remoteTitle = remoteMessage.notification?.title ?? 'Title';
+      const remoteBody = remoteMessage.notification?.body ?? 'Body';
+      setNotificationTitle(remoteTitle);
+      setNotificationBody(remoteBody);
+    });
 
-  // Handle background messages
-  messaging().setBackgroundMessageHandler(async remoteMessage => {
-    console.log('MESSAGE HANDLED IN BACKGROUND');
-    console.log(remoteMessage.notification?.title);
-    console.log(remoteMessage.notification?.body);
-
-    const remoteTitle = remoteMessage.notification?.title ?? 'Title';
-    const remoteBody = remoteMessage.notification?.body ?? 'Body';
-    setNotificationTitle(remoteTitle);
-    setNotificationBody(remoteBody);
-  });
-
-  // Handle foreground messages
-  messaging().onMessage(async remoteMessage => {
-    console.log('MESSAGE HANDLED IN FOREGROUND');
-    console.log(remoteMessage.notification?.title);
-    console.log(remoteMessage.notification?.body);
-
-    const remoteTitle = remoteMessage.notification?.title ?? 'Title';
-    const remoteBody = remoteMessage.notification?.body ?? 'Body';
-    setNotificationTitle(remoteTitle);
-    setNotificationBody(remoteBody);
-  });
-
+    return unsubscribe;
+  }, []);
+  
   useEffect(() => {
+    //Get the token from Firebase and display it in the console (for development purposes only)
+    messaging()
+    .getToken()
+    .then((token) => {
+      console.log('TOKEN:', token);
+      // TODO: Send token to the backend
+    })
+    .catch((error) => {
+      console.log('ERROR: Error al obtener el token de Firebase:', error);
+    });
+
     // Request notification permissions from the user
     const requestNotificationPermission = async () => {
       try {
@@ -53,7 +45,7 @@ export default function App() {
             message: 'La aplicación necesita acceder a las notificaciones para recibir notificaciones push.',
             buttonPositive: 'Aceptar',
           },
-        );
+          );
 
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           console.log('Permisos de notificación concedidos');
