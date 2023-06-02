@@ -11,19 +11,27 @@ Before running the app, make sure you have the following installed:
 
 ## Getting Started
 Clone this repository:
-```git clone https://github.com/lucasvillalbaar/notification-service.git```
+```
+git clone https://github.com/lucasvillalbaar/notification-service.git
+```
 
 Navigate to the project directory:
-```cd notification-service/mobile/AwesomeProject```
+```
+cd notification-service/mobile/AwesomeProject
+```
 
 Install the dependencies:
-```npm install```
+```
+npm install
+```
 
 Connect your Android device or start an Android emulator.
 
 Run the app:
 
-```npx react-native run-android```
+```
+npx react-native run-android
+```
 
 ## How it Works
 The app consists of two main files: index.js and App.tsx.
